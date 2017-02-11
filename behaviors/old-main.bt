@@ -1,0 +1,85 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            4,
+            "a7521753-1874-43fa-acc6-cb2c3a93149b",
+            "3ee9326a-110d-463d-9b6a-618ac237b5d3",
+            "28418ffe-8d2e-42ae-8413-c05c62b1e74e"
+        ],
+        "decorators": [],
+        "options": {}
+    },
+    "4": {
+        "id": 4,
+        "class": "PlayAnimation",
+        "name": "Play a greeting",
+        "asset-pack": "core",
+        "parent": 1,
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "meta": {
+        "version": 1
+    },
+    "3ee9326a-110d-463d-9b6a-618ac237b5d3": {
+        "id": "3ee9326a-110d-463d-9b6a-618ac237b5d3",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "would you like to practice math?",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "28418ffe-8d2e-42ae-8413-c05c62b1e74e": {
+        "id": "28418ffe-8d2e-42ae-8413-c05c62b1e74e",
+        "class": "Listen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "start.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "a7521753-1874-43fa-acc6-cb2c3a93149b": {
+        "id": "a7521753-1874-43fa-acc6-cb2c3a93149b",
+        "class": "PlayAudio",
+        "name": "",
+        "options": {
+            "audioPath": "FX_Bawhoop.mp3"
+        },
+        "asset-pack": "core",
+        "parent": 1
+    }
+}

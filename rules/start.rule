@@ -1,0 +1,25 @@
+# This rule starts the skill
+
+# sample parses:
+#   let's do math
+#   let's play the math game please ok?
+#   can we please play the math game?
+#   i'd like to try the math game?
+#   i want to practice math
+#   can i do math now with you?
+#   i want to improve my multiplying skills now?
+#   shall we improve my multiplying skill now?
+#   i want to be better at math
+#   i want to do better at math
+#   i want to help my math skills
+#   i need to be better with my math skills
+#   let's practice at the math game
+TopRule =
+    $*
+    $verb (?at | ?with) (?my | ?the)
+    (math | [multipl(y|(ication)|(ying))] ) {what='start'}
+    (?game | ?skill?s)
+    $*
+;
+
+verb = (excecute | run | practice | do | play | try | help | improve | better);

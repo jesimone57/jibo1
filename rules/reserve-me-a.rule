@@ -1,0 +1,6 @@
+TopRule =
+    $*
+    reserve me a
+    flight {book='air'} | hotel {book='lodging'}
+    $*
+;

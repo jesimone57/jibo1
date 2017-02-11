@@ -1,0 +1,16 @@
+# this rule stops the skill
+#   please stop
+#   time to quit for now
+#   i've had enough of the math practice
+#   i want to quit the math game now
+#   we are done
+#   no more
+#   can we please give it a break for now
+#   stop with the math skill
+#   let's call it quits
+TopRule = $*
+   (stop | halt | break | quit | quits | enough | done | finished | (no more))
+   (?at | ?of | ?with) ( ?the | ?my)
+   (?math | ?multiplication | ?multiplying) {what='stop'}
+   (?game | ?skills) $*
+;

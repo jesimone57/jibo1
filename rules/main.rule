@@ -1,0 +1,29 @@
+# Allow Jibo to understand the following phrases and combinations of...
+#
+# "Say hello"
+# "Play a bloop sound"
+# "Say goodbye"
+#
+# Returns:
+# "NLParse": {
+#   "action": "playSound", // e.g. sayHello, playSound
+#   "sound": "bloop" // bloop, bleep, or whistle
+# },
+#
+TopRule = $* (
+    # Add your rules and responses here
+    ( ($hello) {action='sayHello'} ) |
+    ( ($play (*a) $sound{sound=sound._item}) {action='playSound'} ) |
+    ( ($goodbye) {action='endDialogue'} ) |
+    ( (dance) {action='dance'} ) |
+    ( ($hello (to *a) $name{name=name._item}) {action='greetPerson'} ) 
+) $*;
+
+# Variable words and phrases
+sound @= ($w){_item=_parsed}; # use (+$w) to parse multiple words
+name @= (+$w){_item=_parsed};
+
+# Simple words and phrases
+play = (play | make);
+hello = (?say ( hello | hi | howdy));
+goodbye = (?say (good bye) | goodbye | bye | (so long) | ciao);

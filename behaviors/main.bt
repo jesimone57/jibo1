@@ -1,0 +1,730 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "Repeat forever",
+        "asset-pack": "core",
+        "children": [
+            "7b4b4f1b-4a68-482a-9b96-b4a6e54d0293",
+            "a7fcd3cc-9ce6-4f1e-9e1c-351c50a2a48d",
+            "a86ddb40-ac6d-4908-87fe-14df5cb0a2fb"
+        ],
+        "decorators": [
+            "e9e29b09-d613-41fe-878b-01e1576240ac"
+        ],
+        "options": {}
+    },
+    "4": {
+        "id": 4,
+        "class": "PlayAnimation",
+        "name": "Play a greeting",
+        "asset-pack": "core",
+        "parent": "318a5671-89b9-41a8-ad92-03254fff0d7f",
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "6": {
+        "id": 6,
+        "class": "PlayAudio",
+        "name": "Bloop",
+        "asset-pack": "core",
+        "parent": "3aaefc85-f903-49c3-ab2d-3a210fab072d",
+        "options": {
+            "audioPath": "FX_Bloop.mp3"
+        },
+        "decorators": [
+            "6ef48feb-9adb-4cba-a79d-a1dd839f8dc0"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "e9e29b09-d613-41fe-878b-01e1576240ac": {
+        "id": "e9e29b09-d613-41fe-878b-01e1576240ac",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "318a5671-89b9-41a8-ad92-03254fff0d7f": {
+        "id": "318a5671-89b9-41a8-ad92-03254fff0d7f",
+        "class": "Parallel",
+        "name": "sayHello",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": "a86ddb40-ac6d-4908-87fe-14df5cb0a2fb",
+        "children": [
+            4,
+            "48c3dc33-b54c-4d4d-a29d-6b954986c6ba",
+            "3c6aaeac-8cae-497c-83f9-596130497979"
+        ],
+        "decorators": [
+            "ec86652f-4444-40eb-8f2b-6d9621c52b3c"
+        ]
+    },
+    "a7fcd3cc-9ce6-4f1e-9e1c-351c50a2a48d": {
+        "id": "a7fcd3cc-9ce6-4f1e-9e1c-351c50a2a48d",
+        "class": "Parallel",
+        "name": "",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "6666c906-89cc-414d-8d49-c6dce9053a90",
+            "f9bae50a-716a-48ee-addf-c314915e8e0d"
+        ]
+    },
+    "6666c906-89cc-414d-8d49-c6dce9053a90": {
+        "id": "6666c906-89cc-414d-8d49-c6dce9053a90",
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "a7fcd3cc-9ce6-4f1e-9e1c-351c50a2a48d",
+        "children": [
+            "3a75fcb3-146d-495d-adfc-a709e5ad66e3",
+            "22beb5d4-c1ab-4f9c-a803-22595b700027"
+        ]
+    },
+    "5fca986a-c38f-4d3b-8b8e-f3e047bd016d": {
+        "id": "5fca986a-c38f-4d3b-8b8e-f3e047bd016d",
+        "class": "Subtree",
+        "name": "Idle",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "3a75fcb3-146d-495d-adfc-a709e5ad66e3",
+        "decorators": [
+            "7a38082a-dca7-4091-96a0-5be59564acdf",
+            "3208df58-9789-4c20-92da-5bf97c8ae6fa"
+        ]
+    },
+    "3208df58-9789-4c20-92da-5bf97c8ae6fa": {
+        "id": "3208df58-9789-4c20-92da-5bf97c8ae6fa",
+        "class": "SucceedOnEvent",
+        "name": "",
+        "options": {
+            "eventName": "listen",
+            "onEvent": [
+                "() => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "f9bae50a-716a-48ee-addf-c314915e8e0d": {
+        "id": "f9bae50a-716a-48ee-addf-c314915e8e0d",
+        "class": "Listen",
+        "name": "Listen for \"Hey Jibo\", then for rule",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: notepad.listenForHeyJibo,",
+                "        detectEnd: true,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "main.rule",
+            "onResult": [
+                "(listener) => {",
+                "    ",
+                "    listener.on('hey-jibo', (asrResult, speaker) => {",
+                "      jibo.animate.setLEDColor([0.8, 0.8, 1]); // Turn LED l.blue",
+                "      // Check if we have an identity for this speaker",
+                "    \tif(speaker.speakerIdStatus==\"ACCEPTED\"){",
+                "    \t\t// Store current speaker name globally",
+                "    \t\tnotepad.currentSpeaker = speaker.speakerIds[0];",
+                "    \t\t// Prepare our speaker name by removing non-alphanumeric characters",
+                "    \t\tnotepad.currentSpeakerClean = speaker.speakerIds[0].replace(/\\W/g,'');",
+                "    \t\t// Create (or connect to existing) database for this user's prefs",
+                "    \t\tvar NeDB = notepad.NeDB;",
+                "    \t\tvar nUserPrefsDB = new NeDB({",
+                "    \t\t\tfilename:'db/'+notepad.currentSpeakerClean+'_prefs.json',",
+                "    \t\t\tautoload:true",
+                "    \t\t});",
+                "    \t\t// Check to see if new or returning user and update database accordingly",
+                "    \t\tnUserPrefsDB.find({}, function(err,docs){",
+                "    \t\t\tif(!docs.length){",
+                "    \t\t\t\t// Save preferences for new users",
+                "    \t\t\t\tnUserPrefsDB.insert({",
+                "    \t\t\t\t\t_id:notepad.currentSpeaker,",
+                "    \t\t\t\t\tfirstAccess:true,",
+                "              accessCount:1",
+                "    \t\t\t\t});",
+                "    \t\t\t\tnotepad.newUser = true;",
+                "    \t\t\t} else {",
+                "    \t\t\t\tvar nCurrAccessCount = docs[0].accessCount + 1;",
+                "            // Update preferences",
+                "    \t\t\t\tnUserPrefsDB.update({_id:notepad.currentSpeaker}, {firstAccess:false,accessCount:nCurrAccessCount}, {}, function(err,numReplace){});",
+                "    \t\t\t\tnotepad.newUser = false;",
+                "    \t\t\t}",
+                "    \t\t});",
+                "    \t}",
+                "      emitter.emit('listen');",
+                "    });",
+                "    ",
+                "    listener.on('cloud', function(asrResult, speaker) {",
+                "      notepad.results = asrResult.NLParse;",
+                "      if(!notepad.listenForHeyJibo){ emitter.emit('listen'); }",
+                "    });",
+                "    ",
+                "    listener.on('incremental', function(asrResult, speaker) {",
+                "        // available if incremental is set to true",
+                "        notepad.results = asrResult.Input;",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "a7fcd3cc-9ce6-4f1e-9e1c-351c50a2a48d"
+    },
+    "22beb5d4-c1ab-4f9c-a803-22595b700027": {
+        "id": "22beb5d4-c1ab-4f9c-a803-22595b700027",
+        "class": "LookAt",
+        "name": "Look at closest entity",
+        "options": {
+            "getTarget": [
+                "() => {",
+                "\tlet jibo = require('jibo');\t",
+                "\tlet entity = jibo.lps.getClosestVisualEntity();",
+                "\t",
+                "\t// x is meters forward, y is meters left, and z is meters up",
+                "  let nDefaultPosition = {x: 0.1, y: 0, z: 0.285}; // emulates initial \"center\"",
+                "  let position = nDefaultPosition;",
+                "",
+                "\tif (entity && entity.parts.length > 0) {",
+                "\t\tlet raysData = entity.parts[0].value.rays;",
+                "\t\tif (raysData !== undefined && raysData.length > 0) {",
+                "\t\t\tlet origin = entity.parts[0].value.rays[0].origin;",
+                "\t\t\tlet dir = entity.parts[0].value.rays[0].dir;",
+                "\t\t\tposition\t= {x: dir.x + origin.x, y:dir.y + origin.y, z: dir.z + origin.z};",
+                "\t\t}",
+                "\t}",
+                "\treturn position;",
+                "}"
+            ],
+            "isContinuous": false,
+            "config": [
+                "(lookAt) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "6666c906-89cc-414d-8d49-c6dce9053a90"
+    },
+    "7b4b4f1b-4a68-482a-9b96-b4a6e54d0293": {
+        "id": "7b4b4f1b-4a68-482a-9b96-b4a6e54d0293",
+        "class": "ExecuteScript",
+        "name": "Init and connect to DB",
+        "options": {
+            "exec": [
+                "() => {",
+                "  // Connect to NeDB",
+                "  notepad.NeDB = require('nedb');",
+                "  ",
+                "  // Setup globals (run once)",
+                "  if(!notepad.skillInitialized){",
+                "    console.log(\"Initializing...\");",
+                "    ",
+                "    notepad.results = {};",
+                "    notepad.currentSpeaker = \"\";",
+                "    notepad.newUser = true;",
+                "    notepad.listenForHeyJibo = true;",
+                "    notepad.skillInitialized = true;",
+                "  }",
+                "  ",
+                "  // Turn LED off if not listening",
+                "  if(notepad.listenForHeyJibo){ jibo.animate.setLEDColor([0, 0, 0]); } ",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "a86ddb40-ac6d-4908-87fe-14df5cb0a2fb": {
+        "id": "a86ddb40-ac6d-4908-87fe-14df5cb0a2fb",
+        "class": "Switch",
+        "name": "Respond to queries",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "ecc2eb5f-71df-4ff2-9714-0f4012062aec",
+            "e29ad388-0668-466c-8a61-bc7433a616d9",
+            "c7e60ea7-5c16-4044-a92e-fa875e457f2e",
+            "318a5671-89b9-41a8-ad92-03254fff0d7f",
+            "0659a028-7126-4dee-bc1c-82461b681c16"
+        ]
+    },
+    "ec86652f-4444-40eb-8f2b-6d9621c52b3c": {
+        "id": "ec86652f-4444-40eb-8f2b-6d9621c52b3c",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  let results = notepad.results;",
+                "  if(results!==undefined && results.action!==undefined){",
+                "    if(results.action==\"sayHello\"){ return true; }",
+                "  }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "c7e60ea7-5c16-4044-a92e-fa875e457f2e": {
+        "id": "c7e60ea7-5c16-4044-a92e-fa875e457f2e",
+        "class": "Sequence",
+        "name": "playSound",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "a86ddb40-ac6d-4908-87fe-14df5cb0a2fb",
+        "children": [
+            "3aaefc85-f903-49c3-ab2d-3a210fab072d",
+            "ceab8414-1de4-4448-a5ad-f658a10066bd"
+        ],
+        "decorators": [
+            "6aa13f97-f049-429f-bd29-59629a9162ed"
+        ]
+    },
+    "3aaefc85-f903-49c3-ab2d-3a210fab072d": {
+        "id": "3aaefc85-f903-49c3-ab2d-3a210fab072d",
+        "class": "Switch",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "c7e60ea7-5c16-4044-a92e-fa875e457f2e",
+        "children": [
+            6,
+            "7f87503a-e468-4cd9-9bff-f888f3bc1869",
+            "f3934185-478f-463b-9d38-b56e9651e193"
+        ]
+    },
+    "6ef48feb-9adb-4cba-a79d-a1dd839f8dc0": {
+        "id": "6ef48feb-9adb-4cba-a79d-a1dd839f8dc0",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  let results = notepad.results;",
+                "  if(results!==undefined && results.sound!==undefined){",
+                "    if(results.sound==\"bloop\"){ return true; }",
+                "  }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "7f87503a-e468-4cd9-9bff-f888f3bc1869": {
+        "id": "7f87503a-e468-4cd9-9bff-f888f3bc1869",
+        "class": "PlayAudio",
+        "name": "Bleep",
+        "asset-pack": "core",
+        "parent": "3aaefc85-f903-49c3-ab2d-3a210fab072d",
+        "options": {
+            "audioPath": "FX_Bleep.mp3"
+        },
+        "decorators": [
+            "2c17941a-d963-4fa4-aa73-21c6653e091f"
+        ]
+    },
+    "2c17941a-d963-4fa4-aa73-21c6653e091f": {
+        "id": "2c17941a-d963-4fa4-aa73-21c6653e091f",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  let results = notepad.results;",
+                "  if(results!==undefined && results.sound!==undefined){",
+                "    if(results.sound==\"bleep\"){ return true; }",
+                "  }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "f3934185-478f-463b-9d38-b56e9651e193": {
+        "id": "f3934185-478f-463b-9d38-b56e9651e193",
+        "class": "PlayAudio",
+        "name": "Whistle",
+        "asset-pack": "core",
+        "parent": "3aaefc85-f903-49c3-ab2d-3a210fab072d",
+        "options": {
+            "audioPath": "FX_Whistle.mp3"
+        },
+        "decorators": [
+            "106acf66-eadf-491d-9835-4030432b5a3c"
+        ]
+    },
+    "106acf66-eadf-491d-9835-4030432b5a3c": {
+        "id": "106acf66-eadf-491d-9835-4030432b5a3c",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  let results = notepad.results;",
+                "  if(results!==undefined && results.sound!==undefined){",
+                "    if(results.sound==\"whistle\"){ return true; }",
+                "  }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "48c3dc33-b54c-4d4d-a29d-6b954986c6ba": {
+        "id": "48c3dc33-b54c-4d4d-a29d-6b954986c6ba",
+        "class": "TextToSpeechJs",
+        "name": "Say \"hello\"",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "  let nPhraseARRAY = [\"Hello!\", \"Hi!\", \"What's up!\", \"Hey!\"];",
+                "  if(notepad.currentSpeaker){",
+                "    nPhraseARRAY = [",
+                "      \"Hello, \"+notepad.currentSpeaker+\"!\",",
+                "      \"Hi, \"+notepad.currentSpeaker+\"!\",",
+                "      \"What's up, \"+notepad.currentSpeaker+\"!\",",
+                "      \"Hey, \"+notepad.currentSpeaker+\"!\"",
+                "    ];",
+                "  }",
+                "  var nRandPhrase = nPhraseARRAY[Math.floor(Math.random()*nPhraseARRAY.length)];",
+                "  callback(nRandPhrase);",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "318a5671-89b9-41a8-ad92-03254fff0d7f"
+    },
+    "6aa13f97-f049-429f-bd29-59629a9162ed": {
+        "id": "6aa13f97-f049-429f-bd29-59629a9162ed",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  let results = notepad.results;",
+                "  if(results!==undefined && results.action!==undefined){",
+                "    if(results.action==\"playSound\"){ return true; }",
+                "  }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "ceab8414-1de4-4448-a5ad-f658a10066bd": {
+        "id": "ceab8414-1de4-4448-a5ad-f658a10066bd",
+        "class": "ExecuteScript",
+        "name": "continue dialogue",
+        "options": {
+            "exec": [
+                "() => {",
+                "  // Set to true if you want to reset or end the dialogue",
+                "  notepad.listenForHeyJibo = false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c7e60ea7-5c16-4044-a92e-fa875e457f2e"
+    },
+    "3a75fcb3-146d-495d-adfc-a709e5ad66e3": {
+        "id": "3a75fcb3-146d-495d-adfc-a709e5ad66e3",
+        "class": "Switch",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "6666c906-89cc-414d-8d49-c6dce9053a90",
+        "children": [
+            "5fca986a-c38f-4d3b-8b8e-f3e047bd016d"
+        ]
+    },
+    "7a38082a-dca7-4091-96a0-5be59564acdf": {
+        "id": "7a38082a-dca7-4091-96a0-5be59564acdf",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.listenForHeyJibo;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "3c6aaeac-8cae-497c-83f9-596130497979": {
+        "id": "3c6aaeac-8cae-497c-83f9-596130497979",
+        "class": "ExecuteScript",
+        "name": "continue dialogue",
+        "options": {
+            "exec": [
+                "() => {",
+                "  // Set to true if you want to reset or end the dialogue",
+                "  notepad.listenForHeyJibo = false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "318a5671-89b9-41a8-ad92-03254fff0d7f"
+    },
+    "b2fdb1d6-e3b5-4d80-9b83-cb0f156bcb36": {
+        "id": "b2fdb1d6-e3b5-4d80-9b83-cb0f156bcb36",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  let results = notepad.results;",
+                "  if(results!==undefined && results.action!==undefined){",
+                "    if(results.action==\"endDialogue\"){ return true; }",
+                "  }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "0659a028-7126-4dee-bc1c-82461b681c16": {
+        "id": "0659a028-7126-4dee-bc1c-82461b681c16",
+        "class": "Sequence",
+        "name": "endDialogue",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "a86ddb40-ac6d-4908-87fe-14df5cb0a2fb",
+        "children": [
+            "13446fc9-132f-49c9-a168-8d87e2fb53ba",
+            "e801bf5c-bd6d-4595-b88a-61f3322b8718"
+        ],
+        "decorators": [
+            "b2fdb1d6-e3b5-4d80-9b83-cb0f156bcb36"
+        ]
+    },
+    "e801bf5c-bd6d-4595-b88a-61f3322b8718": {
+        "id": "e801bf5c-bd6d-4595-b88a-61f3322b8718",
+        "class": "ExecuteScript",
+        "name": "end dialogue",
+        "options": {
+            "exec": [
+                "() => {",
+                "  // Set to true if you want to reset or end the dialogue",
+                "  notepad.listenForHeyJibo = true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "0659a028-7126-4dee-bc1c-82461b681c16"
+    },
+    "13446fc9-132f-49c9-a168-8d87e2fb53ba": {
+        "id": "13446fc9-132f-49c9-a168-8d87e2fb53ba",
+        "class": "TextToSpeech",
+        "name": "Say \"bye\"",
+        "options": {
+            "words": "Bye!",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "0659a028-7126-4dee-bc1c-82461b681c16"
+    },
+    "e29ad388-0668-466c-8a61-bc7433a616d9": {
+        "id": "e29ad388-0668-466c-8a61-bc7433a616d9",
+        "class": "Sequence",
+        "name": "do a dance",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "a86ddb40-ac6d-4908-87fe-14df5cb0a2fb",
+        "children": [
+            "6fe51688-3cf2-4786-89ac-d13a13670898",
+            "fd8dcfdc-5c09-4e92-8a70-ed1a61be50ec"
+        ],
+        "decorators": [
+            "7bf15c9f-df69-4f5c-95f8-857b111923a3"
+        ]
+    },
+    "6fe51688-3cf2-4786-89ac-d13a13670898": {
+        "id": "6fe51688-3cf2-4786-89ac-d13a13670898",
+        "class": "PlayAnimation",
+        "name": "dance",
+        "options": {
+            "animPath": "dance.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "e29ad388-0668-466c-8a61-bc7433a616d9"
+    },
+    "7bf15c9f-df69-4f5c-95f8-857b111923a3": {
+        "id": "7bf15c9f-df69-4f5c-95f8-857b111923a3",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  let results = notepad.results;",
+                "  if(results!==undefined && results.action!==undefined){",
+                "    if(results.action==\"dance\"){ return true; }",
+                "  }",
+                "  return false;",
+                "}",
+                ""
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "fd8dcfdc-5c09-4e92-8a70-ed1a61be50ec": {
+        "id": "fd8dcfdc-5c09-4e92-8a70-ed1a61be50ec",
+        "class": "ExecuteScript",
+        "name": "continue dialogue",
+        "options": {
+            "exec": [
+                "() => {",
+                "  // Set to true if you want to reset or end the dialogue",
+                "  notepad.listenForHeyJibo = false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "e29ad388-0668-466c-8a61-bc7433a616d9"
+    },
+    "ecc2eb5f-71df-4ff2-9714-0f4012062aec": {
+        "id": "ecc2eb5f-71df-4ff2-9714-0f4012062aec",
+        "class": "Sequence",
+        "name": "greetPerson",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "a86ddb40-ac6d-4908-87fe-14df5cb0a2fb",
+        "decorators": [
+            "b952bba3-42ce-435c-846f-f507890a763c"
+        ],
+        "children": [
+            "4a70967a-dbec-4d4b-a37b-5e0ee3d2bc47",
+            "056134da-c041-4be7-a430-843c0476c0e2",
+            "c18db0ca-d332-48ff-bf71-67d8e8538c49"
+        ]
+    },
+    "b952bba3-42ce-435c-846f-f507890a763c": {
+        "id": "b952bba3-42ce-435c-846f-f507890a763c",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  let results = notepad.results;",
+                "  if(results!==undefined && results.action!==undefined){",
+                "    if(results.action==\"greetPerson\"){ return true; }",
+                "  }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "4a70967a-dbec-4d4b-a37b-5e0ee3d2bc47": {
+        "id": "4a70967a-dbec-4d4b-a37b-5e0ee3d2bc47",
+        "class": "PlayAnimation",
+        "name": "be excited",
+        "options": {
+            "animPath": "excited.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "ecc2eb5f-71df-4ff2-9714-0f4012062aec"
+    },
+    "c18db0ca-d332-48ff-bf71-67d8e8538c49": {
+        "id": "c18db0ca-d332-48ff-bf71-67d8e8538c49",
+        "class": "ExecuteScript",
+        "name": "continue dialogue",
+        "options": {
+            "exec": [
+                "() => {",
+                "  // Set to true if you want to reset or end the dialogue",
+                "  notepad.listenForHeyJibo = false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "ecc2eb5f-71df-4ff2-9714-0f4012062aec"
+    },
+    "056134da-c041-4be7-a430-843c0476c0e2": {
+        "id": "056134da-c041-4be7-a430-843c0476c0e2",
+        "class": "TextToSpeechJs",
+        "name": "Say \"hello\"",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "  let results = notepad.results;",
+                "  console.log(results);",
+                "  let name = results.name;",
+                "  console.log(`name is ${name}`);",
+                "  ",
+                "  let phrases = [",
+                "      `Hello, ${name}`,",
+                "      `Hi, ${name}`,",
+                "      `What's up, ${name}`,",
+                "      `Hey, ${name}`,",
+                "      `Pleased to meet you ${name}`",
+                "    ];",
+                "",
+                "  var randomPhrase = phrases[Math.floor(Math.random()*phrases.length)];",
+                "  callback(randomPhrase);",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "ecc2eb5f-71df-4ff2-9714-0f4012062aec"
+    }
+}

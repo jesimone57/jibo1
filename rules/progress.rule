@@ -1,0 +1,13 @@
+# this rule triggers a progess report assessment
+# summarizing the practice session
+#
+# sample parses:
+#   how did i do?
+#   how have i done?
+#   how have i coming along?
+#   what is my progress so far?
+TopRule =
+    $*
+    (doing | done | do | (coming along) | progress) {what='progress'}
+    $*
+;

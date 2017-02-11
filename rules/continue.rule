@@ -1,0 +1,12 @@
+# This rule continues the skill if paused, stopped or interupted
+#
+# sample parses:
+#   shall we keep going
+#   can we continue from where we left off
+#   can we pick up the math skill from where we left off
+TopRule =
+    $*
+    ((keep going) | continue | (pick up))
+    ?(from where we (were | stopped | (left off))) {what='continue'}
+    $*
+;
